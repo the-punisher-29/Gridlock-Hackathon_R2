@@ -1,0 +1,13 @@
+{
+  "stop_line": [
+    [
+      0,
+      550
+    ],
+    [
+      1280,
+      550
+    ]
+  ],
+  "traffic_light_state": "red"
+}
