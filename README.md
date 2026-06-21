@@ -1,4 +1,4 @@
-# 🚦 Automated Traffic Violation Detection System
+# Automated Traffic Violation Detection System
 
 An AI-powered computer vision system that automatically detects, classifies, and documents traffic violations from CCTV/traffic-pole footage — including helmet non-compliance, seatbelt non-compliance, triple riding, mobile phone usage while riding, and red-light/stop-line violations. Detected vehicles' license plates are automatically read using OCR, and every violation is logged with annotated evidence images for review.
 
@@ -6,7 +6,7 @@ A Streamlit web application is included for end-to-end testing: upload a video, 
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 Manual review of traffic camera footage for violations is slow, inconsistent, and doesn't scale. This project automates that process using a pipeline of object detection models, object tracking, and rule-based geometric logic, producing structured, searchable violation records with photographic evidence — ready for downstream enforcement review.
 
@@ -23,7 +23,7 @@ Manual review of traffic camera footage for violations is slow, inconsistent, an
 
 ---
 
-## 🧠 Methodology
+## Methodology
 
 The system splits violations into two categories, since not every violation needs a trained model:
 
@@ -59,7 +59,7 @@ Streamlit App: Review, Filter, Visualize, Export Report (CSV)
 
 ---
 
-## 🤖 Models Used
+## Models Used
 
 | # | Model | Purpose | Base Architecture | Training Data |
 |---|-------|---------|--------------------|----------------|
@@ -72,7 +72,7 @@ Streamlit App: Review, Filter, Visualize, Export Report (CSV)
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 project_root/
@@ -95,11 +95,11 @@ project_root/
 
 ---
 
-## 💾 Trained Models & Datasets
+## Trained Models & Datasets
 
 Trained model weights and the merged training datasets are **not included in this GitHub repository** due to size. They are hosted on Google Drive:
 
-🔗 **Download link:** `https://drive.google.com/drive/folders/1nVTaJNPKV65fgyGePNtAi6jfZSjgCyg3?usp=sharing`
+**Download link:** `https://drive.google.com/drive/folders/1nVTaJNPKV65fgyGePNtAi6jfZSjgCyg3?usp=sharing`
 
 The Drive folder contains:
 - `models/general/yolov8n.pt` — pretrained COCO weights
@@ -124,15 +124,15 @@ project_root/
 
 ---
 
-## 🎥 Demo Video
+## Demo Video
 
 A walkthrough of the Streamlit application — uploading footage, calibrating the stop line, running detection, and reviewing the violation report — is available here:
 
-🔗 **Demo video:** `https://drive.google.com/file/d/1O7X3Mcw_fyBkw3tlDTuPeQj2fIfSHHg-/view?usp=drive_link`
+**Demo video:** `https://drive.google.com/file/d/1O7X3Mcw_fyBkw3tlDTuPeQj2fIfSHHg-/view?usp=drive_link`
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### 1. Clone the repository
 ```bash
@@ -159,7 +159,7 @@ Download from the Google Drive link above and place files exactly as shown in th
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 ### Run the Streamlit application
 ```bash
@@ -178,7 +178,7 @@ Processes `test/traffic.mp4` and saves annotated output + logs violations to `vi
 
 ---
 
-## 📊 Evaluation
+## Evaluation
 
 Each fine-tuned model is evaluated using standard object detection metrics:
 ```bash
@@ -188,7 +188,7 @@ Reports Precision, Recall, mAP@50, and mAP@50-95 per class. End-to-end pipeline 
 
 ---
 
-## 🔧 Tech Stack
+## Tech Stack
 
 - **Detection/Tracking:** Ultralytics YOLOv8, `supervision` (ByteTrack)
 - **OCR:** EasyOCR
