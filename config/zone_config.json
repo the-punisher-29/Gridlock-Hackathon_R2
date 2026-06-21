@@ -2,11 +2,11 @@
   "stop_line": [
     [
       0,
-      550
+      445
     ],
     [
-      1280,
-      550
+      1250,
+      380
     ]
   ],
   "traffic_light_state": "red"

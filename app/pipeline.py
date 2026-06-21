@@ -9,6 +9,7 @@ from app.ocr.plate_ocr import read_plate
 from app.rules.rule_engine import RuleEngine
 from app.rules.zone_config import ZoneConfig
 from app.db import log_violation
+import imageio
 
 EVIDENCE_DIR = "evidence"
 os.makedirs(EVIDENCE_DIR, exist_ok=True)
@@ -109,10 +110,8 @@ class TrafficViolationPipeline:
     def process_video(self, video_path, output_path="output_annotated.mp4", sample_every_n=1):
         cap = cv2.VideoCapture(video_path)
         fps = cap.get(cv2.CAP_PROP_FPS)
-        w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-        out = cv2.VideoWriter(output_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+        writer = imageio.get_writer(output_path, fps=fps, codec="libx264", pixelformat="yuv420p")
 
         frame_idx = 0
         while cap.isOpened():
@@ -121,9 +120,11 @@ class TrafficViolationPipeline:
                 break
             if frame_idx % sample_every_n == 0:
                 annotated = self.process_frame(frame, frame_idx)
-                out.write(annotated)
+                # imageio expects RGB, cv2 frames are BGR
+                annotated_rgb = cv2.cvtColor(annotated, cv2.COLOR_BGR2RGB)
+                writer.append_data(annotated_rgb)
             frame_idx += 1
 
         cap.release()
-        out.release()
+        writer.close()
         print(f"Done. Output saved to {output_path}")

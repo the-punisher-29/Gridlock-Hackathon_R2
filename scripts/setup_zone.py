@@ -7,7 +7,7 @@ from app.rules.zone_config import ZoneConfig
 zc = ZoneConfig()
 
 # Stop line — adjust to your actual frame coordinates (signal-pole front view)
-zc.set_stop_line((0, 550), (1280, 550))
+zc.set_stop_line((0, 400), (1280, 420))
 zc.set_light_state("red")
 
 zc.save()
